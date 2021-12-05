@@ -3,7 +3,7 @@ function computerPlay(){
     return options[Math.floor(Math.random() * 3)];
 }
 
-function round(playerSelection,computerSelection){
+function getResult(playerSelection,computerSelection){
     playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection === computerSelection) {
@@ -63,7 +63,7 @@ function game() {
     alert(" Greetings human ! Let's play !");
     while((score.player < 5) && (score.computer < 5) ){
         let playerSelection = prompt('Rock, paper or scissors ?');
-        let result = round(playerSelection,computerPlay());
+        let result = getResult(playerSelection,computerPlay());
         if (result == 'replay'){
             showScore(score);
             continue;
