@@ -8,7 +8,7 @@ function round(playerSelection,computerSelection){
 
     if (playerSelection === computerSelection) {
         alert("It's a tie ! ");
-        return "replay"; // replay
+        return "replay"; 
     }
 
     if (playerSelection === 'rock'){
@@ -50,45 +50,36 @@ function round(playerSelection,computerSelection){
    
 
     alert('Please enter rock, paper or scissors');
-    return 'replay' //
+    return 'replay' 
 
 }
 
 function game() {
-    //make a score object with  player and computer attribute initialize to zero
     let score = {
         player: 0,
         computer: 0
     }
 
     alert(" Greetings human ! Let's play !");
-    //While score.player and score.computer < 5 
     while((score.player < 5) && (score.computer < 5) ){
-        // Ask the player for a choice and store it in the string variable playerSelection
         let playerSelection = prompt('Rock, paper or scissors ?');
-        //Store result of round in a result string variable
         let result = round(playerSelection,computerPlay());
-        // if result = replay , show score and continue the while loop
         if (result == 'replay'){
             showScore(score);
             continue;
         }
-        // if result = victory, score.player++ ,show score  and continue the while loop
         if (result =='victory'){
             score.player++;
             showScore(score);
             continue;
         }
-        // if result = loss, score.computer++, show score  and continue the while loop
         if(result=='loss'){
             score.computer++;
             showScore(score);
             continue;
         }
     }
-    // Declare Winner
     declareWinner(score);
-    // Ask for rematch
     askRematch();
 
 }
