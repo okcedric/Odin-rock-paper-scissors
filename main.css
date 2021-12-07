@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+    letter-spacing: -.1rem;
+}
+
+body{
+    font-family: inter;
+
+}
+
+h1{
+    font-size: 4rem;
+
+}
+
+#score-board{
+}
