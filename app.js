@@ -99,6 +99,7 @@ function updateScoreBoard(){
     }
     if (score.player == 5){
         computerSays(' Congratulations! You defated me.... ');
+        askRematch();
     }
 }
 
@@ -112,6 +113,14 @@ function askRematch(){
     let rematchButton = document.createElement('button');
     rematchButton.textContent = "Rematch?";
     buttonRack.appendChild(rematchButton)
-
+    rematchButton.addEventListener('click', ()=> {
+        buttons.forEach(button => {
+            button.style.cssText = 'display : inline';
+        })
+        score.player = 0;
+        score.computer = 0;
+        updateScoreBoard();
+        rematchButton.remove();
+    })
 }
    
