@@ -5,9 +5,11 @@ let score = {
     computer:0
 }
 
-buttons.forEach(button => {
-    button.addEventListener('click',() => playRound(button.getAttribute('id')))
-})
+
+    buttons.forEach(button => {
+        button.addEventListener('click',() => playRound(button.getAttribute('id')))
+    })
+
 
 
 function computerPlay(){
@@ -73,12 +75,11 @@ function playRound(playerSelection){
                 updateScoreBoard();
                 return score;
             } 
-        }
+        } 
 
    
 
-    computerSays('Please enter rock, paper or scissors');
-    return score;
+    
 
 }
 
@@ -92,16 +93,15 @@ function updateScoreBoard(){
     let computerScore = document.querySelector('#computer-score');
     humanScore.textContent = `Human : ${score.player}`;
     computerScore.textContent = `Computer : ${score.computer}`;
-}
-
-
-function declareWinner(score){
-    if(score.player==5) {
-        computerSays(' Congratulations, You defated me ! ');
-    } else {
-        computerSays('GAME OVER ! I defeated you ');
+    if (score.computer == 5) {
+        computerSays('GAME OVER I defeated you ');
+    }
+    if (score.player == 5){
+        computerSays(' Congratulations! You defated me.... ');
     }
 }
+
+
 
 function askRematch(){
   confirm('Let\'s play again !')? game() : alert('OK Bye');
