@@ -1,105 +1,89 @@
 const options = ['rock','paper','scissors'];
-let playerSelection = prompt('Rock, paper or scissors ?');
-playRound(playerSelection);
-
-function game() {
-    let score = {
-        player: 0,
-        computer: 0
-    }
-    
-    alert(" Greetings human ! Let's play !");
-    while((score.player < 5) && (score.computer < 5) ){
-        
-        let result = playRound();
-        if (result == 'replay'){
-            showScore(score);
-            continue;
-        }
-        if (result =='victory'){
-            score.player++;
-            showScore(score);
-            continue;
-        }
-        if(result=='loss'){
-            score.computer++;
-            showScore(score);
-            continue;
-        }
-    }
-    declareWinner(score);
-    askRematch();
-    
+let buttons = document.querySelectorAll('button');
+let score = {
+    player: 0,
+    computer:0
 }
+
+buttons.forEach(button => {
+    button.addEventListener('click',() => playRound(button.getAttribute('id')))
+})
 
 
 function computerPlay(){
     return options[Math.floor(Math.random() * 3)];
 }
 
+
+
 function playRound(playerSelection){
     playerSelection = playerSelection.toLowerCase();
     let computerSelection = computerPlay();
 
     if (playerSelection === computerSelection) {
-        alert("It's a tie ! ");
+        computerSays("It's a tie ! ");
         return "replay"; 
     }
 
     if (playerSelection === 'rock'){
         if(computerSelection === 'scissors') {
-            alert("You win! Rock beats Scissors");
+            computerSays("You win! Rock beats Scissors");
             return 'victory';
         } 
 
         if(computerSelection === 'paper') {
-            alert("You lose! Paper beats Rock");
+            computerSays("You lose! Paper beats Rock");
             return "loss";
          } 
     }
     
     if (playerSelection === 'paper'){
         if(computerSelection === 'rock') {
-            alert("You win! Paper beats Rock");
+            computerSays("You win! Paper beats Rock");
             return 'victory';
         } 
         
         if(computerSelection === 'scissors') {
-            alert("You lose! Scissors beats Paper");
+            computerSays("You lose! Scissors beats Paper");
             return "loss";
          } 
     }
 
     if (playerSelection === 'scissors'){
             if(computerSelection === 'paper') {
-                alert("You win! Scissors beats Paper");
+                computerSays("You win! Scissors beats Paper");
                 return 'victory';
             } 
             
             if(computerSelection === 'rock') {
-                alert("You lose! Rock beats Scissors");
+                computerSays("You lose! Rock beats Scissors");
                 return "loss";
             } 
         }
 
    
 
-    alert('Please enter rock, paper or scissors');
+    computerSays('Please enter rock, paper or scissors');
     return 'replay' 
 
 }
 
+function computerSays(speech){
+    let voice = document.querySelector('#computer-voice');
+    voice.textContent = speech;
+}
 
 function showScore(score){
-    alert( `Player : ${score.player} ;\n Computer : ${score.computer}`);
+    let scoreBoard = document.querySelector('#score-board');
+    scoreBoard.textContent = `Player : ${score.player} ;\n Computer : ${score.computer}`;
 }
 
 
 function declareWinner(score){
     if(score.player==5) {
-        alert(' Congratulations, You defated me ! ');
+        computerSays(' Congratulations, You defated me ! ');
     } else {
-        alert('GAME OVER ! I defeated you ')
+        computerSays('GAME OVER ! I defeated you ');
     }
 }
 
