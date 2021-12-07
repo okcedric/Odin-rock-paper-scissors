@@ -23,7 +23,7 @@ function playRound(playerSelection){
     let computerSelection = computerPlay();
 
     if (playerSelection === computerSelection) {
-        computerSays("It's a tie ! ");
+        computerSays("It's a tie! ");
         return score;
                 
     }
@@ -121,6 +121,7 @@ function askRematch(){
         score.computer = 0;
         updateScoreBoard();
         rematchButton.remove();
+        computerSays("Let\'s fight human!");
     })
 }
    

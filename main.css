@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900;300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@900;400;300&display=swap');
 
 * {
     box-sizing: border-box;
@@ -31,7 +31,7 @@ main{
 
 h1{
     font-size: 2rem;
-    font-weight: 300;
+    font-weight: 900;
 }
 
 #score-board{
@@ -42,6 +42,7 @@ h1{
 #computer-voice{
     text-align: center;
     font-size: 3rem;
+    font-weight: 400;
 }
 #button-rack {
     text-align: center;
