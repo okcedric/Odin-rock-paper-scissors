@@ -22,49 +22,62 @@ function playRound(playerSelection){
 
     if (playerSelection === computerSelection) {
         computerSays("It's a tie ! ");
-        return "replay"; 
+        return score;
+                
     }
 
     if (playerSelection === 'rock'){
         if(computerSelection === 'scissors') {
             computerSays("You win! Rock beats Scissors");
-            return 'victory';
+            score.player++;
+            updateScoreBoard();
+            return score;
+            
         } 
 
         if(computerSelection === 'paper') {
             computerSays("You lose! Paper beats Rock");
-            return "loss";
+            score.computer++;
+            return score;
          } 
     }
     
     if (playerSelection === 'paper'){
         if(computerSelection === 'rock') {
             computerSays("You win! Paper beats Rock");
-            return 'victory';
+            score.player++;
+            updateScoreBoard();
+            return score;
         } 
         
         if(computerSelection === 'scissors') {
             computerSays("You lose! Scissors beats Paper");
-            return "loss";
+            score.computer++;
+            updateScoreBoard();
+            return score;
          } 
     }
 
     if (playerSelection === 'scissors'){
             if(computerSelection === 'paper') {
                 computerSays("You win! Scissors beats Paper");
-                return 'victory';
+                score.player++;
+                updateScoreBoard();
+                return score;
             } 
             
             if(computerSelection === 'rock') {
                 computerSays("You lose! Rock beats Scissors");
-                return "loss";
+                score.computer++;
+                updateScoreBoard();
+                return score;
             } 
         }
 
    
 
     computerSays('Please enter rock, paper or scissors');
-    return 'replay' 
+    return score;
 
 }
 
@@ -73,9 +86,11 @@ function computerSays(speech){
     voice.textContent = speech;
 }
 
-function showScore(score){
-    let scoreBoard = document.querySelector('#score-board');
-    scoreBoard.textContent = `Player : ${score.player} ;\n Computer : ${score.computer}`;
+function updateScoreBoard(){
+    let humanScore = document.querySelector('#human-score');
+    let computerScore = document.querySelector('#computer-score');
+    humanScore.textContent = `Human : ${score.player}`;
+    computerScore.textContent = `Computer : ${score.computer}`;
 }
 
 
