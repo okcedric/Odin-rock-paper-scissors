@@ -1,12 +1,13 @@
 const options = ['rock','paper','scissors'];
-//playRound(computerPlay());
+let playerSelection = prompt('Rock, paper or scissors ?');
+playRound(playerSelection);
 
 function game() {
     let score = {
         player: 0,
         computer: 0
     }
-
+    
     alert(" Greetings human ! Let's play !");
     while((score.player < 5) && (score.computer < 5) ){
         
@@ -28,7 +29,7 @@ function game() {
     }
     declareWinner(score);
     askRematch();
-
+    
 }
 
 
@@ -36,10 +37,9 @@ function computerPlay(){
     return options[Math.floor(Math.random() * 3)];
 }
 
-function playRound(){
-    let computerSelection = computerPlay();
-    let playerSelection = prompt('Rock, paper or scissors ?');
+function playRound(playerSelection){
     playerSelection = playerSelection.toLowerCase();
+    let computerSelection = computerPlay();
 
     if (playerSelection === computerSelection) {
         alert("It's a tie ! ");
