@@ -95,6 +95,7 @@ function updateScoreBoard(){
     computerScore.textContent = `Computer : ${score.computer}`;
     if (score.computer == 5) {
         computerSays('GAME OVER I defeated you ');
+        askRematch();
     }
     if (score.player == 5){
         computerSays(' Congratulations! You defated me.... ');
@@ -104,6 +105,13 @@ function updateScoreBoard(){
 
 
 function askRematch(){
-  confirm('Let\'s play again !')? game() : alert('OK Bye');
+    buttons.forEach(button=>{
+        button.style.cssText = 'display : none';
+    })
+    let buttonRack = document.querySelector('#button-rack');
+    let rematchButton = document.createElement('button');
+    rematchButton.textContent = "Rematch?";
+    buttonRack.appendChild(rematchButton)
+
 }
    
