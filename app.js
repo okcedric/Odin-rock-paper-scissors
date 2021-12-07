@@ -38,6 +38,7 @@ function playRound(playerSelection){
         if(computerSelection === 'paper') {
             computerSays("You lose! Paper beats Rock");
             score.computer++;
+            updateScoreBoard();
             return score;
          } 
     }
