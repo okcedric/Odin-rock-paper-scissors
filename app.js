@@ -1,9 +1,44 @@
 const options = ['rock','paper','scissors'];
+//playRound(computerPlay());
+
+function game() {
+    let score = {
+        player: 0,
+        computer: 0
+    }
+
+    alert(" Greetings human ! Let's play !");
+    while((score.player < 5) && (score.computer < 5) ){
+        
+        let result = playRound();
+        if (result == 'replay'){
+            showScore(score);
+            continue;
+        }
+        if (result =='victory'){
+            score.player++;
+            showScore(score);
+            continue;
+        }
+        if(result=='loss'){
+            score.computer++;
+            showScore(score);
+            continue;
+        }
+    }
+    declareWinner(score);
+    askRematch();
+
+}
+
+
 function computerPlay(){
     return options[Math.floor(Math.random() * 3)];
 }
 
-function getResult(playerSelection,computerSelection){
+function playRound(){
+    let computerSelection = computerPlay();
+    let playerSelection = prompt('Rock, paper or scissors ?');
     playerSelection = playerSelection.toLowerCase();
 
     if (playerSelection === computerSelection) {
@@ -54,35 +89,6 @@ function getResult(playerSelection,computerSelection){
 
 }
 
-function game() {
-    let score = {
-        player: 0,
-        computer: 0
-    }
-
-    alert(" Greetings human ! Let's play !");
-    while((score.player < 5) && (score.computer < 5) ){
-        let playerSelection = prompt('Rock, paper or scissors ?');
-        let result = getResult(playerSelection,computerPlay());
-        if (result == 'replay'){
-            showScore(score);
-            continue;
-        }
-        if (result =='victory'){
-            score.player++;
-            showScore(score);
-            continue;
-        }
-        if(result=='loss'){
-            score.computer++;
-            showScore(score);
-            continue;
-        }
-    }
-    declareWinner(score);
-    askRematch();
-
-}
 
 function showScore(score){
     alert( `Player : ${score.player} ;\n Computer : ${score.computer}`);
@@ -101,5 +107,3 @@ function askRematch(){
   confirm('Let\'s play again !')? game() : alert('OK Bye');
 }
    
-
-game();
